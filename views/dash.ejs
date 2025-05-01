@@ -4,12 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/signalovernoise.png" type="image/x-icon">
+    <link rel="stylesheet" href="/dash.css">
     <title>Signal_Over_Noise</title>
 </head>
 <body>
-    <h1>AP</h1>
-    <ul>
-        <!-- li.a's here -->
-    </ul>
+    <div class="behind">AP</div>
+    <div class="main-container">
+        <div class="med-container">
+            <% medArticles.forEach(element => { %>
+                <div class="card card-small">
+                    <img class="image image-small" src="<%- element.img %>">
+                    <a href="/story/<%- element.id %>"><%- element.title %>.</a>
+                </div>
+            <% }); %>
+        </div>
+        <div class="big-container">
+            <% bigArticles.forEach(element => { %>
+                <div class="card">
+                    <img class="image" src="<%- element.img %>">
+                    <a href="/story/<%- element.id %>"><%- element.title %>.</a>
+                </div>
+            <% }); %>
+        </div> 
+        <div class="lil-container">
+            <div class="column left">
+                <ul>
+                    <% for(let i = 0; i < lilArticles.length*.5; i++){ %>
+                        <% if(lilArticles[i].title){ %>
+                            <li><a href="/story/<%- lilArticles[i].id %>"><%- lilArticles[i].title %></a></li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="column right">
+                <ul>
+                    <% for(let i = Math.floor(lilArticles.length*.5); i < lilArticles.length; i++){ %>
+                        <% if(lilArticles[i]){ %>
+                            <li><a href="/story/<%- lilArticles[i].id %>"><%- lilArticles[i].title %></a></li>
+                        <% } %>
+                    <% }; %>
+                </ul>
+            </div>
+        </div> 
+    </div>
 </body>
 </html>
